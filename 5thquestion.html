@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Format Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h2>Date Format Checker</h2>
+    <p>Enter a string to check if it contains a valid date in the format <strong>dd-mm-yyyy</strong>.</p>
+
+    <input type="text" id="inputString" placeholder="Enter your string">
+    <button id="checkButton">Check</button>
+
+    <div id="result"></div>
+
+    <script>
+        const checkButton = document.getElementById('checkButton');
+        const result = document.getElementById('result');
+
+        checkButton.addEventListener('click', () => {
+            const inputString = document.getElementById('inputString').value.trim();
+            const datePattern = /^([0-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-\d{4}$/;
+
+            if (datePattern.test(inputString)) {
+                result.textContent = `The string contains a valid date: ${inputString}`;
+                result.style.color = 'green';
+            } else {
+                result.textContent = "The string does not contain a valid date in the format dd-mm-yyyy.";
+                result.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
