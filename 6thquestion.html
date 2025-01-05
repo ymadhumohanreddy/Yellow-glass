@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h2>Array Operations</h2>
+    <p>Perform add and delete operations on an array.</p>
+
+    <div>
+        <input type="text" id="arrayInput" placeholder="Enter array elements (comma separated)">
+        <button id="initializeArray">Initialize Array</button>
+    </div>
+
+    <div>
+        <input type="number" id="deleteCount" placeholder="Number of elements to remove">
+        <button id="deleteElements">Delete Elements</button>
+    </div>
+
+    <div id="arrayDisplay">Current Array: []</div>
+
+    <script>
+        let currentArray = [];
+
+        document.getElementById('initializeArray').addEventListener('click', () => {
+            const input = document.getElementById('arrayInput').value.trim();
+            currentArray = input ? input.split(',').map(item => item.trim()) : [];
+            updateArrayDisplay();
+        });
+
+        document.getElementById('deleteElements').addEventListener('click', () => {
+            const deleteCount = parseInt(document.getElementById('deleteCount').value, 10);
+
+            if (isNaN(deleteCount) || deleteCount <= 0) {
+                alert("Please enter a valid number of elements to remove.");
+                return;
+            }
+
+            for (let i = 0; i < deleteCount; i++) {
+                const elementToRemove = prompt("Enter the element to remove:").trim();
+                currentArray = currentArray.filter(item => item !== elementToRemove);
+            }
+
+            updateArrayDisplay();
+        });
+
+        function updateArrayDisplay() {
+            document.getElementById('arrayDisplay').textContent = `Current Array: [${currentArray.join(', ')}]`;
+        }
+    </script>
+</body>
+</html>
