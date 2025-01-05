@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Event Handling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border: 2px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        .hover-box {
+            background-color: #add8e6;
+        }
+        .clicked {
+            background-color: #90ee90;
+        }
+    </style>
+</head>
+<body>
+    <h2>Mouse Event Handling Example</h2>
+
+    <div id="hoverBox" class="box">Hover over me</div>
+    <div id="clickBox" class="box">Click me</div>
+
+    <script>
+        // Mouseover and Mouseout Event Handling
+        const hoverBox = document.getElementById('hoverBox');
+        hoverBox.addEventListener('mouseover', () => {
+            hoverBox.textContent = 'Mouse Over!';
+            hoverBox.classList.add('hover-box');
+        });
+        hoverBox.addEventListener('mouseout', () => {
+            hoverBox.textContent = 'Hover over me';
+            hoverBox.classList.remove('hover-box');
+        });
+
+        // Click Event Handling
+        const clickBox = document.getElementById('clickBox');
+        clickBox.addEventListener('click', () => {
+            clickBox.textContent = 'Box Clicked!';
+            clickBox.classList.toggle('clicked');
+        });
+    </script>
+</body>
+</html>
