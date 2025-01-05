@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List Modification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Grocery List</h2>
+
+    <ul id="groceryList">
+        <li>Milk</li>
+        <li>Bread</li>
+        <li>Eggs</li>
+        <li>Butter</li>
+    </ul>
+
+    <button id="addButton">ADD</button>
+    <button id="removeButton">REMOVE</button>
+    <button id="replaceButton">REPLACE</button>
+
+    <script>
+        const groceryList = document.getElementById('groceryList');
+        const addButton = document.getElementById('addButton');
+        const removeButton = document.getElementById('removeButton');
+        const replaceButton = document.getElementById('replaceButton');
+
+        // Add Cereals to the list
+        addButton.addEventListener('click', () => {
+            const newItem = document.createElement('li');
+            newItem.textContent = 'Cereals';
+            groceryList.appendChild(newItem);
+        });
+
+        // Remove the first item from the list
+        removeButton.addEventListener('click', () => {
+            if (groceryList.firstElementChild) {
+                groceryList.removeChild(groceryList.firstElementChild);
+            }
+        });
+
+        // Replace the first item with Pasta
+        replaceButton.addEventListener('click', () => {
+            if (groceryList.firstElementChild) {
+                const newItem = document.createElement('li');
+                newItem.textContent = 'Pasta';
+                groceryList.replaceChild(newItem, groceryList.firstElementChild);
+            }
+        });
+    </script>
+</body>
+</html>
