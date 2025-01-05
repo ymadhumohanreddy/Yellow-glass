@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wish Master Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #greeting {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h2>Wish Master Page</h2>
+    <p>Enter your name and click "Wish Me" to see a personalized greeting.</p>
+
+    <input type="text" id="userName" placeholder="Enter your name">
+    <button id="wishButton">Wish Me</button>
+
+    <div id="greeting"></div>
+
+    <script>
+        const wishButton = document.getElementById('wishButton');
+        const greeting = document.getElementById('greeting');
+
+        wishButton.addEventListener('click', () => {
+            const userName = document.getElementById('userName').value.trim();
+            if (!userName) {
+                greeting.textContent = "Please enter your name.";
+                return;
+            }
+
+            const currentHour = new Date().getHours();
+            let wishMessage = "";
+
+            if (currentHour >= 0 && currentHour < 1) {
+                wishMessage = `Hello ${userName}, Good Morning!`;
+            } else if (currentHour >= 1 && currentHour < 15) {
+                wishMessage = `Hello ${userName}, Good Afternoon!`;
+            } else if (currentHour >= 15 && currentHour < 20) {
+                wishMessage = `Hello ${userName}, Good Evening!`;
+            } else {
+                wishMessage = `Hello ${userName}, Good Night!`;
+            }
+
+            greeting.textContent = wishMessage;
+        });
+    </script>
+</body>
+</html>
